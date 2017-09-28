@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web:
+    # App image details
+    image: anandhp/sample-node-app
+    deploy:
+      replicas: 5
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 50M
+    ports:
+      - "8080:8080"
+    networks:
+      - webnet
+networks:
+  webnet:
